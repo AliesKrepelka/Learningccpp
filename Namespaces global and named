@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string_view>
+
+
+void print(){ //global one
+    std::cout << " there\n";
+}
+
+namespace Foo // define a namespace named Foo
+{
+    
+    void print(){
+    std::cout << "Hello \n";
+    }   
+    // This doSomething() belongs to namespace Foo
+    int doSomething(int x, int y)
+    {
+        return x + y;
+    }
+}
+
+namespace Goo // define a namespace named Goo
+{
+    // This doSomething() belongs to namespace Goo
+    int doSomething(int x, int y)
+    {
+        return x - y;
+    }
+}
+
+namespace roo
+{
+    std::string_view doSomething(int x)
+    {
+        if(x > 1){
+            return "okay";
+        }
+        else 
+        return "other";
+    }
+}
+
+int main()
+{
+    std::cout << Foo::doSomething(4, 3) << '\n'; // use the doSomething() that exists in namespace Foo
+     std::cout << Goo::doSomething(4, 3) << '\n';
+     std::cout << roo::doSomething(-1) << '\n';
+      std::cout << roo::doSomething(3) << '\n';
+      Foo::print(); 
+      ::print();
+    return 0;
+}
