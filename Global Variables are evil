@@ -1,0 +1,27 @@
+#include <iostream>
+
+namespace constants
+{
+    constexpr double gravity { 10 }; //compile the constant 10 at compile time with constexpr
+    constexpr double distance{20};
+}
+
+// This function can calculate the instant velocity for any gravity value (more useful)
+double instantVelocity(int time, double gravity)
+{
+    return gravity * time;
+}
+
+double speed(int time, double distance)
+{
+    return distance / time;
+}
+
+
+int main()
+{
+    std::cout << instantVelocity(5, constants::gravity) << '\n'; // pass our constant to the function as a parameter
+    std::cout << speed(5, constants::distance) << '\n';
+    
+    return 0;
+}
