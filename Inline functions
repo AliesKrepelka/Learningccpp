@@ -1,0 +1,9 @@
+A little hard to understand but from what i understand you only want to use the inline keyword to make functions that are very small and simple. 
+
+This reduces the call stack over head for a performance gain
+
+Aditonally inline functions are usally created inside the header file 
+
+Example:
+
+inline double pi() { return 3.14159; }
