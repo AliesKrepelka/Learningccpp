@@ -1,0 +1,36 @@
+//main.cpp
+#include "constants.h"
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "Enter a radius: ";
+    double radius{};
+    std::cin >> radius;
+
+    std::cout << "The circumference is: " << 2 * radius * constants::pi << '\n';
+
+    return 0;
+}
+
+
+
+///////// constants.h
+
+
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+// define your own namespace to hold constants
+namespace constants
+{
+    inline constexpr double pi { 3.14159 }; // note: now inline constexpr
+    inline constexpr double avogadro { 6.0221413e23 };
+    inline constexpr double myGravity { 9.2 }; // m/s^2 -- gravity is light on this planet
+    // ... other related constants
+  //inline - use one defenition every where 
+//also if the constexpr was not an inline variable when added to the include on main.cpp it would change the constexpr to static due to it being in the glovbal namespace
+//inline variables c++17
+}
+#endif
