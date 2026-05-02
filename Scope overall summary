@@ -1,0 +1,12 @@
+Scope summary
+
+An identifier’s scope determines where the identifier can be accessed within the source code.
+
+Variables with block (local) scope can only be accessed from the point of declaration until the end of the block in which they are declared (including nested blocks). This includes:
+Local variables
+Function parameters
+Program-defined type definitions (such as enums and classes) declared inside a block
+Variables and functions with global scope can be accessed from the point of declaration until the end of the file. This includes:
+Global variables
+Functions
+Program-defined type definitions (such as enums and classes) declared inside a namespace or in the global scope
