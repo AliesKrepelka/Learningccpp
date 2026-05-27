@@ -1,0 +1,21 @@
+
+#include <iostream>
+
+int main()
+{
+  
+int var = 5;  
+int* point_var = &var;
+
+std::cout<< *point_var << " content of the adress pointed to by point_var \n";
+std::cout<< &var << " Adress of var \n";
+std::cout<< &point_var << " Adress of the variable that pointer_var is looking at \n";
+std::cout<< *point_var << " Value of the pointer \n";
+*point_var = 1;
+std::cout<< *point_var << " Value of the pointer after change \n";
+std::cout<< var << " Value of Var \n";
+
+var = 10;
+std::cout<< *point_var << " Value of the pointer after changing to 10 \n";
+std::cout<< var << " Value of Var \n";
+}
