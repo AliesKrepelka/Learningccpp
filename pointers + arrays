@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main()
+{
+  
+int *ptr; //create the pointer
+int arr[5]; //create the empty array 
+
+ for (int i = 0; i < 5; ++i)
+    {
+        std::cout << "&arr[" << i << "] = " << &arr[i] << std::endl;
+    }
+
+
+ptr = arr; //set the pointer to look at arr[0]
+for(int i =0; i<5;++i){
+     std::cout << "ptr + " << i << " = "<< ptr + i << std::endl;
+}
+}
