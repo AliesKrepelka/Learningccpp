@@ -1,0 +1,21 @@
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+
+struct Subtract {
+   int num1;
+    int num2;
+    Subtract(int& a,int& t) : num1(a), num2(t){}
+};
+
+int main (){
+    std::vector<std::unique_ptr<Subtract>> subtraction;
+    
+    subtraction.push_back(std::make_unique<Subtract>(5, 2));
+     for (const auto& subtractPtr : subtraction) {
+        std::cout << "Number 1 is: " << subtractPtr->num1 << "\n";
+        std::cout << "Number 2 is: " << subtractPtr->num2 << "\n";
+        std::cout << "Both Subtracted is: " << subtractPtr->num1 - subtractPtr->num2 << "\n";
+}
+}
