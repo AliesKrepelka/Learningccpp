@@ -1,0 +1,25 @@
+#include <iostream>
+#include <memory>
+
+struct Math {
+    int num1 = 5;
+    int num2 = 10;
+    
+  
+    Math(const int a, const int& t) : num1(a), num2(t) {}
+};
+
+
+std::unique_ptr<Math> adding(const int& firstNum, const int& secondNum) {
+    return std::make_unique<Math>(firstNum, secondNum);
+}
+
+int main() {
+    
+    auto mathPtr = std::make_unique<Math>(1, 2);
+    
+    std::cout << "First number: " << mathPtr->num1 << "\n";
+    std::cout << "Second number: " << mathPtr->num2 << "\n";
+    std::cout << "Adding: " << mathPtr->num1 + mathPtr->num2 << "\n";
+    return 0;
+}
