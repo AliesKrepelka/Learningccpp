@@ -1,0 +1,29 @@
+#include <iostream>
+#include <memory>
+
+class Engine {
+public:
+Engine (){ std::cout << "I am a car engine \n";}
+
+void Run(){std::cout << "I am a running car Engine\n";}
+};
+
+
+
+class Car{
+    private:
+    
+std::unique_ptr<Engine> engine;
+public:
+Car(): engine(std::make_unique<Engine>()){}
+
+
+void start(){
+    engine->Run();
+}
+};
+int main()
+{
+  Car car;
+  car.start();
+}
