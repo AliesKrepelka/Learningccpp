@@ -1,0 +1,23 @@
+#include <iostream>
+#include <memory>
+
+struct Multiply {
+    int num1; 
+    int num2;
+
+    Multiply(int x, int y) : num1(x), num2(y) {}
+};
+
+std::unique_ptr<Multiply> Mult(int num1, int num2){
+    return std::make_unique<Multiply>(num1, num2);
+}
+
+int main () {
+  
+    auto MultPtr = std::make_unique<Multiply>(3, 2);
+    
+    
+    std::cout << "The 2 numbers multiplied together: " << MultPtr->num1 * MultPtr->num2 << "\n";
+
+
+}
