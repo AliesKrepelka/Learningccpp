@@ -1,0 +1,49 @@
+#include <algorithm>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+
+struct MediaAsset
+{
+    virtual ~MediaAsset() = default;
+};
+
+struct Song : public MediaAsset{
+    std::wstring artist;
+    std::wstring title;
+    Song(const std::wstring& artist_, const std::wstring& title_) : artist{ artist_}, title{ title_} {}
+
+};
+
+
+struct Photo : public MediaAsset{
+    std::wstring date;
+    std::wstring location;
+    std::wstring subject;
+    Photo(
+        const std::wstring& date_,
+        const std::wstring& location_,
+        const std::wstring& subject_) : 
+        date{date_}, location{location_}, subject{subject_} {}
+        
+    
+    
+}; 
+
+using namespace std;
+
+
+int main()
+{
+  auto sp1 = make_shared<Song>(L"The Beatles", L"Im happy to dance with you");
+  shared_ptr<Song> sp2(new Song(L"Lady Gaga", L"Just Dance"));
+  shared_ptr<Song> sp5(nullptr);
+  
+  sp5 = make_shared<Song>(L"Elton John", L"I'm Still Standing");
+  
+    std::wcout << L"Song 1: " << sp1->artist << L" - " << sp1->title << L"\n";
+    std::wcout << L"Song 2: " << sp2->artist << L" - " << sp2->title << L"\n";
+    std::wcout << L"Song 5: " << sp5->artist << L" - " << sp5->title << L"\n";
+  
+}
