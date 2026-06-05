@@ -1,0 +1,62 @@
+// shared_ptr-examples.cpp
+#include <algorithm>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+
+struct MediaAsset
+{
+    virtual ~MediaAsset() = default; // make it polymorphic
+};
+
+struct Song : public MediaAsset
+{
+    std::wstring artist;
+    std::wstring title;
+    Song(const std::wstring& artist_, const std::wstring& title_) :
+        artist{ artist_ }, title{ title_ } {}
+};
+
+struct Photo : public MediaAsset
+{
+    std::wstring date;
+    std::wstring location;
+    std::wstring subject;
+    Photo(
+        const std::wstring& date_,
+        const std::wstring& location_,
+        const std::wstring& subject_) :
+        date{ date_ }, location{ location_ }, subject{ subject_ } {}
+};
+
+using namespace std;
+
+int main()
+{
+    auto sp1 = make_shared<Song>(L"The Beatles", L"Help!");
+    auto sp2 = make_shared<Song>(L"Led Zeppelin", L"Stairway to Heaven");
+
+
+    auto sp3(sp2); 
+
+    
+    auto sp4 = sp2; 
+
+    
+    shared_ptr<Song> sp7(nullptr);
+
+   
+    wcout << L"sp1 target: " << sp1->title << L" (Ref count: " << sp1.use_count() << L")\n";
+    wcout << L"sp2 target: " << sp2->title << L" (Ref count: " << sp2.use_count() << L")\n\n";
+
+    
+    wcout << L"--- Swapping sp1 and sp2 ---\n";
+    sp1.swap(sp2);
+
+ 
+    wcout << L"sp1 now points to: " << sp1->title << L" (Ref count: " << sp1.use_count() << L")\n";
+    wcout << L"sp2 now points to: " << sp2->title << L" (Ref count: " << sp2.use_count() << L")\n";
+
+    return 0;
+}
