@@ -1,0 +1,27 @@
+#include <iostream>
+#include <memory>
+#include <string>
+
+struct Student{
+    std::string Name;
+    std::string Grade;
+    Student(std::string n, std::string g) : Name(n), Grade(g){}
+};
+
+std::unique_ptr<Student> Students(const std::string& Name, const std::string& Grade ){
+    return std::make_unique<Student>(Name, Grade);
+}
+
+
+int main()
+{
+    std::string x, y;
+    printf("What is the 1st students name? ");
+    std::cin >> x;
+    printf("What is their grade level? ");
+    std::cin >> y;
+    
+    auto student = std::make_unique<Student>(x,y);
+    std::cout << "The student is: " << student->Name << "\n";
+    std::cout << "And their grade level is: " << student->Grade << "\n";
+}
