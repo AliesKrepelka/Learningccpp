@@ -1,0 +1,26 @@
+#include <iostream>
+#include <memory>
+#include <string>
+
+struct Tracker{
+  int weight{};
+  std::string exercise;
+  int reps{};
+  
+  Tracker(int x, std::string y, int z) : weight(x), exercise(y), reps(z){}
+  };  
+
+
+
+std::unique_ptr<Tracker> Trackers(int weight, std::string exercise, int reps){
+    return std::make_unique<Tracker>(weight, exercise, reps);
+}
+
+
+int main()
+{
+    auto tracker = std::make_unique<Tracker>(100, "bench press", 12); 
+    std::cout<< tracker->weight << "lbs" <<  std::endl;
+    std::cout<< tracker->exercise << std::endl;
+    std::cout<< tracker->reps << "reps"<< std::endl;
+}
