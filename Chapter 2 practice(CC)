@@ -1,0 +1,40 @@
+#include <cstdio>
+#include <iostream>
+
+enum Pets {
+    Age,
+    Weight
+};
+
+struct Info {
+    // It's good practice to use an initializer list for constructors
+    Info(Pets pets) : pets(pets) {}
+
+    void print(int a, int b) {
+        switch (pets) {
+        case Pets::Age:
+            std::cout << "Age: " << a << std::endl;
+            break; // Added break to prevent fallthrough
+        case Pets::Weight:
+            std::cout << "Weight: " << b << std::endl;
+            break; // Added break to prevent fallthrough
+        default:
+            printf("Error\n");
+            break;
+        }
+    }
+
+private:
+    Pets pets;
+};
+
+int main() {
+    // Create the object, setting the enum to Age
+    Info InfoAdd(Pets::Age);
+    Info InfoAddW(Pets::Weight);
+
+    // Call the void function directly without wrapping it in printf
+    InfoAdd.print(10, 5);
+    InfoAddW.print(10, 5);
+    return 0;
+}
