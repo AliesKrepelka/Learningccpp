@@ -1,0 +1,39 @@
+#include <cstdio>
+#include <iostream>
+
+enum Pets {
+    Age,
+    Weight
+};
+
+struct Info {
+    Info(Pets pets) : pets(pets) {}
+
+    void print(int a, int b) {
+        switch (pets) {
+        case Pets::Age:
+            std::cout << "Age: " << a << std::endl;
+            break; 
+        case Pets::Weight:
+            std::cout << "Weight: " << b << std::endl;
+            break; 
+        default:
+            printf("Error\n");
+            break;
+        }
+    }
+
+private:
+    Pets pets;
+};
+
+int main() {
+   
+    Info InfoAdd(Pets::Age);
+    Info InfoAddW(Pets::Weight);
+
+    
+    InfoAdd.print(10, 5);
+    InfoAddW.print(10, 5);
+    return 0;
+}
